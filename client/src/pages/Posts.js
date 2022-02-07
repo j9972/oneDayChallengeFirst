@@ -1,7 +1,7 @@
 import React from "react";
 
 function Posts() {
-  return <div></div>;
+  return <div>heelo</div>;
 }
 
 export default Posts;
