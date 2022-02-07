@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    postText: {
+    description: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
   });
-
+  /*
   Posts.associate = (models) => {
     Posts.hasMany(models.Comments, {
       onDelete: "cascade",
@@ -23,6 +23,6 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: "cascade",
     });
   };
-
+*/
   return Posts;
 };
