@@ -14,10 +14,13 @@ function Createpost() {
   const validationSchema = Yup.object().shape({
     title: Yup.string().required("you have to write TITLE"),
     description: Yup.string().required("you have to write DESCRIPTION"),
+    username: Yup.string().required("you have to write USERNAME"),
   });
 
   const onSubmit = (data) => {
-    navigate("/");
+    axios.post("http://localhost:3001/posts", data).then((response) => {
+      console.log("connect");
+    });
   };
 
   return (
@@ -27,12 +30,12 @@ function Createpost() {
         onSubmit={onSubmit}
         validationSchema={validationSchema}
       >
-        <Form className="createContainer">
+        <Form className="formContainer">
           <label>Title:</label>
           <ErrorMessage name="title" component="span" />
           <Field
             autoComplete="off"
-            id="createInput"
+            id="inputCreatePost"
             name="title"
             placeholder="title"
           />
@@ -40,9 +43,17 @@ function Createpost() {
           <ErrorMessage name="description" component="span" />
           <Field
             autoComplete="off"
-            id="createInput"
+            id="inputCreatePost"
             name="description"
             placeholder="description"
+          />
+          <label>Username:</label>
+          <ErrorMessage name="username" component="span" />
+          <Field
+            autoComplete="off"
+            id="inputCreatePost"
+            name="username"
+            placeholder="username"
           />
           <button type="submit">Create</button>
         </Form>
