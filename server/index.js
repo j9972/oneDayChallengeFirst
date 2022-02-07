@@ -4,7 +4,7 @@ const PORT = 3001;
 
 const cors = require("cors");
 
-require("dotenv").config();
+// require("dotenv").config();
 
 // server측에서 데이터를 json 형식으로 받을때 필요하다
 app.use(express.json());
@@ -12,7 +12,6 @@ app.use(express.json());
 app.use(cors());
 
 const db = require("./models");
-/*
 
 //Routers -> routes folder속에 있는 파일들을 연결을 해주는 역할
 const postRouter = require("./routes/Posts");
@@ -35,9 +34,13 @@ const likesRouter = require("./routes/Likes");
 // ./like 연결하면 안된다 -> local에 연결되지 않음
 app.use("/likes", likesRouter);
 
-*/
-db.sequelize.sync().then(() => {
-  app.listen(PORT, () => {
-    console.log(`server is running on ${PORT}`);
+db.sequelize
+  .sync()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`server is running on ${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.error("Unable to connect to the database:", err);
   });
-});
