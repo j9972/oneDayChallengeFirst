@@ -1,8 +1,10 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
+  const navigate = useNavigate();
   const [postList, setPostList] = useState([]);
 
   useEffect(() => {
@@ -17,7 +19,14 @@ function Home() {
         return (
           <div key={key} className="post">
             <div className="title">{val.title}</div>
-            <div className="body">{val.description}</div>
+            <div
+              className="body"
+              onClick={() => {
+                navigate(`/post/${val.id}`);
+              }}
+            >
+              {val.description}
+            </div>
             <div className="footer">{val.username}</div>
           </div>
         );

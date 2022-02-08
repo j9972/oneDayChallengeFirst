@@ -9,6 +9,7 @@ function Createpost() {
   const initialValues = {
     title: "",
     description: "",
+    username: "",
   };
 
   const validationSchema = Yup.object().shape({
@@ -19,7 +20,7 @@ function Createpost() {
 
   const onSubmit = (data) => {
     axios.post("http://localhost:3001/posts", data).then((response) => {
-      console.log("connect");
+      navigate("/");
     });
   };
 
