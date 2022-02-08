@@ -1,22 +1,21 @@
 module.exports = (sequelize, DataTypes) => {
-  const Posts = sequelize.define("Posts", {
-    title: {
+  const Users = sequelize.define("Users", {
+    email: {
       type: DataTypes.STRING,
-      allowNull: false,
-    },
-    description: {
-      type: DataTypes.STRING,
+      validate: {
+        isEmail: true, // 이메일 주소 형식을 검증한다
+      },
       allowNull: false,
     },
     username: {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   });
-  Posts.associate = (models) => {
-    Posts.hasMany(models.Comments, {
-      onDelete: "cascade",
-    });
-  };
-  return Posts;
+
+  return Users;
 };

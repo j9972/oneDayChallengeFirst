@@ -12,6 +12,8 @@ function App() {
       <Router>
         <Link to="/createpost">Create a Post</Link>
         <Link to="/">Home</Link>
+        <Link to="/login"> Login</Link>
+        <Link to="/register">Registration</Link>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/createpost" element={<CreatePost />} />
