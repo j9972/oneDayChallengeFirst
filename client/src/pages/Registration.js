@@ -20,7 +20,8 @@ function Registration() {
 
   const onSubmit = (data) => {
     axios.post("http://localhost:3001/users", data).then((response) => {
-      navigate("/login");
+      console.log("make a user");
+      response.json("make a user");
     });
   };
 
